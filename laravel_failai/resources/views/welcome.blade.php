@@ -19,9 +19,9 @@
 <!-- Žaidimo lentos struktūra -->
 <div id="game-container">
     <div class="title-container"> Wordle</div> <!-- Konteineris kur laikysiu TITLE-->
-    <div class="message-container"></div>
-    <div class="tile-container"></div>
-    <div class="key-container"></div>
+    <div class="message-container"></div>      <!-- Konteineris kuris laiko Message-->
+    <div class="tile-container"></div>         <!-- Konteineris kuris laiko Tile/įvedamų raidžių kvadratas -->
+    <div class="key-container"></div>          <!-- Konteineris kuris laiko klaviatūros raides -->
 </div>
 </body>
 
