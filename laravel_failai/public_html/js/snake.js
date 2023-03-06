@@ -1,28 +1,28 @@
 // TODO Reikia score sistemos, kad kai paemi valgį, tau priskaičiuoja tašką vieną
 
 //board
-var blockSize = 25;
-var rows = 35;
-var cols = 35;
-var board;
-var context;
+const blockSize = 25;
+const rows = 20;
+const cols = 20;
+let board;
+let context;
 
 //snake head
 
-var snakeX = blockSize * 5;
-var snakeY = blockSize * 5;
+let snakeX = blockSize * 5;
+let snakeY = blockSize * 5;
 
-var velocityX = 0;
-var velocityY=0 ;
+let velocityX = 0;
+let velocityY=0 ;
 
-var snakeBody = []
+let snakeBody = []
 
 //food
-var foodX;
-var foodY;
+let foodX;
+let foodY;
 
 
-var gameOver = false;
+let gameOver = false;
 
 window.onload=function (){
     board=document.getElementById("board");
