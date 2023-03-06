@@ -3,17 +3,17 @@ const keyboard = document.querySelector('.key-container')
 const messageDisplay = document.querySelector('.message-container')
 
 // Galimų žodžių mąsyvas
-const words = ['SUPER', 'VYRAS',  'KALBA','PIEVA','GERTI','PASAS', 'KILTI' ]
+const words = ['SUPER', 'VYRAS', 'LAUKAS', 'KALBA','PIEVA','DUGNAS','GERTI','PASAS', 'KILTI' ]
 const wordle = getRandomWord(words); //Kviečiama funkcija kuri parenka atsitiktinį žodį
 
 
-    // Klaviatūros mygtukai
+// Klaviatūros mygtukai
 const keys = [
     'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D',
     'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'ENTER', '<<',
 ];
 
-    // Wordle žaidimo struktūra 5x6
+// Wordle žaidimo struktūra 5x6
 const guessRows = [
     ['', '', '', '', ''],
     ['', '', '', '', ''],
@@ -41,7 +41,7 @@ function getRandomWord(words) {
     return words[Math.floor(Math.random() * words.length)];
 }
 
-                // Klaviatūros logika
+// Klaviatūros logika
 keys.forEach(key => {
     const buttonElement = document.createElement('button') // Sukuria kiekvienai raidei atskirą mygtuką
     buttonElement.textContent = key;
@@ -85,7 +85,7 @@ const deleteLetter = () => {
         tile.setAttribute('data', '')
     }
 }
-        // Žaidimo pabaigos logika
+// Žaidimo pabaigos logika
 const checkRow = () => {
     const guess = guessRows[currentRow].join('')
 
@@ -110,7 +110,7 @@ const checkRow = () => {
         }
     }
 }
-        // Žinutės konteinerio valdymas
+// Žinutės konteinerio valdymas
 const showMessage = (message) => {
     const messageElement = document.createElement('p') // Sukuriama žinutė su <p> tagu
     messageElement.textContent = message // Nustatoma kokia žinutė bus atvaizduojama
@@ -118,15 +118,15 @@ const showMessage = (message) => {
     setTimeout(() => messageDisplay.removeChild(messageElement), 2500) // Nustatomas kokį laiko tarpą žinutė bus rodoma
 }
 
-        // Aprašomas spalvos pasikeitimo funkcionalumas
+// Aprašomas spalvos pasikeitimo funkcionalumas
 const addColorToKey = (keyLetter,color) => {
     const key = document.getElementById(keyLetter) //pagrindinė logika, kaip turėtų pasikeisti spalva
     key.classList.add(color) // Ištraukiama spalva iš css
 }
 
-        //
+//
 const flipTile = () =>{
-   const rowTiles = document.querySelector('#guessRow-'+ currentRow).childNodes // Pasirenkami spėjimo laukeliai
+    const rowTiles = document.querySelector('#guessRow-'+ currentRow).childNodes // Pasirenkami spėjimo laukeliai
     rowTiles.forEach((tile,index) => { // Kiekvienam spėjimo laukeliui
         const dataLetter = tile.getAttribute('data')
 
