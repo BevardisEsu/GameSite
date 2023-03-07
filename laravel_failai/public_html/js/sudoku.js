@@ -51,7 +51,7 @@ function setGame() {
         for (let z=0;z<9;z++){
             let tile = document.createElement('div');
             tile.id=x.toString() + '-'+z.toString();
-            if(board[x][z] != '-'){ // Tikrinimas, jeigu kvadrate yra '-' jis pakeičiamas tuščia reikšme
+            if(board[x][z] !== '-'){ // Tikrinimas, jeigu kvadrate yra '-' jis pakeičiamas tuščia reikšme
                 tile.innerText = board[x][z];
                 tile.classList.add('tile-start')
             }
@@ -78,7 +78,7 @@ function selectNumber(){
 
 function selectTile(){
     if (numSelected){
-        if (this.innerText != ''){
+        if (this.innerText !== ''){
             return;
         }
         let coords = this.id.split('-');
@@ -91,6 +91,8 @@ function selectTile(){
         else{
             errors +=1;
             document.getElementById('errors').innerText=errors;
+            showMessage('ajjajai')
+            // TODO Reikia pridėti pranešimus veikiančius, nes dabar šiek tiek neveikia
         }
     }
 }
