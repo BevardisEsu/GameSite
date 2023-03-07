@@ -19,6 +19,7 @@ Route::get('/', function () {
 });
 Route::view('/wordle', 'wordle.wordle');
 Route::view('/snake', 'snake.snake');
+Route::view('/sudoku','sudoku.sudoku');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

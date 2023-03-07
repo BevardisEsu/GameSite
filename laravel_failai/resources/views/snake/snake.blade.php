@@ -12,6 +12,9 @@
 <body>
 
 <h1> Snake</h1>
+<h2>Score:</h2>
+<div id="Scoreboard"><h2>0</h2></div>
+<br>
 <canvas id="board"></canvas>
 
 

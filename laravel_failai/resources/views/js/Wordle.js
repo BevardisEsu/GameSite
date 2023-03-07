@@ -3,7 +3,8 @@ const keyboard = document.querySelector('.key-container')
 const messageDisplay = document.querySelector('.message-container')
 
 // Galimų žodžių mąsyvas
-const words = ['SUPER', 'VYRAS', 'LAUKAS', 'KALBA','PIEVA','DUGNAS','GERTI','PASAS', 'KILTI' ]
+const words = ['SUPER', 'VYRAS', 'LAUKAS', 'KALBA','PIEVA','DUGNAS','GERTI','PASAS', 'KILTI','NULIS',
+'TAVAS','AKLAS','KARTU','MIELI','VAKAR','SAUSA','MATOM','RUDUO','MEDIS','KARAS','TAMSA','GAUJA','KAINA',]
 const wordle = getRandomWord(words); //Kviečiama funkcija kuri parenka atsitiktinį žodį
 
 
@@ -45,9 +46,9 @@ function getRandomWord(words) {
 keys.forEach(key => {
     const buttonElement = document.createElement('button') // Sukuria kiekvienai raidei atskirą mygtuką
     buttonElement.textContent = key;
-    buttonElement.setAttribute('id', key); // Priskiria kiekvienam mygtukui ID
+    buttonElement.setAttribute('id', key); // Priskiria kiekvienam mygtukui ID pagal jo raidę
     buttonElement.addEventListener('click', () => handleClick(key)); // Fiksuoja kada ir koks mygtukas buvo paspaustas
-    keyboard.append(buttonElement);
+    keyboard.append(buttonElement); // Išspausdina klaviatūros mygtukus
 })
 
 
@@ -66,6 +67,7 @@ const handleClick = (key) => {
     addLetter(key)
 }
 
+ // Logika, kai paspaudžiamas mygtukas, kad jis įsivestų į laukelį
 const addLetter = (letter) => {
     if (currentTile < 5 && currentRow < 6) {
         const tile = document.getElementById('guessRow-' + currentRow + '-tile-' + currentTile)
@@ -93,10 +95,10 @@ const checkRow = () => {
     if (currentTile > 4) {
         console.log('guess is' + guess, 'worlde is ' + wordle) //Jeigu įvestos 5 raidės, consolėje spausdina teksta
         flipTile() // Kiekvienai pasirinktai raidei priskiria flip tile funkciją
-        if (wordle == guess) {
+        if (wordle === guess) {
             showMessage('Congratulations, your guess was correct!') //Jei žodis teisingas, rodo šį tekstą message konteineryje
             isGameOver = true // Žaidimas pasibaigia
-            return
+
         } else {
             if (currentRow >= 5) { // tikrina ar jau paskautinis spėjimas
                 isGameOver = false // Jei neatspėjamas žodis, žaidimą sustabdo, kad nustotų veikti JS
@@ -132,7 +134,7 @@ const flipTile = () =>{
 
         setTimeout(()=> {
             tile.classList.add('flip')
-            if (dataLetter == wordle[index]) {
+            if (dataLetter === wordle[index]) {
                 tile.classList.add('green-overlay')
                 addColorToKey(dataLetter, 'green-overlay')
             } else if (wordle.includes(dataLetter)) {

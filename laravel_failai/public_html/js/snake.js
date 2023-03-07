@@ -1,5 +1,9 @@
 // TODO Reikia score sistemos, kad kai paemi valgį, tau priskaičiuoja tašką vieną
 
+let Scoreboard =0
+
+let failEatText = 'Tried eating yourself, huh? anyways, your score is:'
+let failtext = 'Congratulations, you failed, your score is:'
 //board
 const blockSize = 25;
 const rows = 20;
@@ -48,7 +52,8 @@ function update(){
 
     if (snakeX === foodX && snakeY === foodY){  //Patikrinu ar suvalgo maistą gyvatė (Jei jie viename kvadrate tai suvalgo)
         snakeBody.push([foodX, foodY])
-        placeFood()
+        placeFood();
+        addScore();
     }
 
     for (let i = snakeBody.length-1;i >0; i--){
@@ -70,13 +75,13 @@ function update(){
 
     if (snakeX <0 || snakeX >cols*blockSize ||snakeY <0 || snakeY > rows*blockSize) {
         gameOver = true;
-        alert("Sori, susimovei")
+        alert(failtext + Scoreboard)
     }
 
     for(let i =0; i< snakeBody.length; i++) {
         if (snakeX === snakeBody[i][0] && snakeY ===snakeBody[i][1]){
             gameOver = true;
-            alert("Sori, susimovei")
+            alert(failEatText + Scoreboard)
         }
     }
 
@@ -106,7 +111,10 @@ function changeDirection(e){
     }
 }
 
-
+function addScore(){
+    Scoreboard+=1;
+    document.getElementById('Scoreboard').innerText=Scoreboard;
+}
 
 
  // Funkcija kuri padės gyvatės maistą random vietoje
