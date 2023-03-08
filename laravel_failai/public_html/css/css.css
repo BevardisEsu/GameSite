@@ -1,3 +1,5 @@
+                    /* --------------------------Headerio css layoutas visas--------------------------- */
+
 .header{
     width: 100%;
     height: 80px;
@@ -19,8 +21,8 @@
 }
 
 .logo-container h1{
-    color: white;
-    height: 100%;
+    height: 260px;
+    width: 260px;
     display: table-cell;
     vertical-align: middle;
     font-size: 32px;
@@ -47,3 +49,7 @@
     color: white;
     font-size: 16px;
 }
+
+
+
+

@@ -13,12 +13,13 @@
 <div class="header">
     <div class="inner-header">
         <div class="logo-container">
-            <h1>MY<span>SITE</span></h1>
+           <img src="public_html/img/ailogo.png" alt="logo">
         </div>
 
         <ul class="navigation">
            <li><a href="/register">Register</a></li>
             <li><a href="/porfolio">Porfolio</a></li>
+            <li><a href="/store">Store</a></li>
             <li><a href="/snake">Snake</a></li>
             <li><a href="/wordle">Wordle</a></li>
             <li><a href="/sudoku">Sudoku</a></li>
