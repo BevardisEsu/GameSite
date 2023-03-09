@@ -3,7 +3,7 @@ let numSelected = null;
 const messageDisplay = document.querySelector('.message-container')
 
 let errors = 0;
-// test
+// testas
 let board = [
     "--5-1489-",
     "84-97-5-1",
