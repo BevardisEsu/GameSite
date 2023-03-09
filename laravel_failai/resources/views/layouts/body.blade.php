@@ -17,7 +17,6 @@
         <div class="content-large">Zaidims2</div>
         <div class="content-large">Zaidims#3</div>
         <div class="content-large">Zaidims#4</div>
-    <div class="footer">Footer</div>
 </div>
 </body>
 </html>
