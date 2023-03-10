@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
+/**
+ * @property int $id
+ * @property int $user_id
+ * @property int $payment_id
+ * @property int $status_id
+ */
+
 class Order extends Model
 {
     use HasFactory;

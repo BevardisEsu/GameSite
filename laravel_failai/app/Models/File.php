@@ -5,6 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int $id
+ * @property string $name
+ * @property string path
+ * @property string $extension
+ * @property string $size
+ * @property string $url
+ */
+
+
 class File extends Model
 {
     public const TYPES_IMAGE    = ['jpg', 'jpeg', 'png', 'gif', 'svg'];
