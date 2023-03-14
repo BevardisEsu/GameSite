@@ -5,7 +5,6 @@ namespace app\Http\Controllers\Administrator;
 
 use App\Http\Controllers\Controller;
 use App\Models\Payment;
-use App\Models\Payments;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
