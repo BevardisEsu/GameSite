@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $game_id
  * @property string $score
  * @property string $status
+ * @method static latest()
  */
 class Score extends Model
 {

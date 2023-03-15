@@ -10,8 +10,8 @@ class GameController extends Controller
 {
     public function index()
     {
-     $game= GamesList::query()->with('GamesList')->get();
-     return view('games.index',compact('game'));
+     $games= GamesList::query()->with('games')->get();
+     return view('games.index',compact('games'));
     }
     public function create(){
 

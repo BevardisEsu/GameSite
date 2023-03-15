@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
  * @property int $user_id
  * @property int $payment_id
  * @property int $status_id
+ * @method static latest()
  */
 
 class Order extends Model

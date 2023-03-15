@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $status_id
  * @property carbon $created_at
  * @property carbon $updated_at
+ * @method static latest()
  */
 
 

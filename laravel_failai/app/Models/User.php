@@ -19,6 +19,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property string $remember_token
  * @property carbon $created_at
  * @property carbon $updated_at
+ * @method  static latest()
  */
 
 class User extends Authenticatable

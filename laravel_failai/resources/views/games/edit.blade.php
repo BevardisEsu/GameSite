@@ -1,9 +1,9 @@
 
-<h1>{{__('names.gamesce')}} {{__('names.editing')}} {{$game->name}}</h1>
+<h1>{{__('names.gamesce')}} {{__('names.editing')}} {{$games->name}}</h1>
 <span>{{__('names.editingform')}}</span>
-<form action="{{route('categories.update', $game->id)}}" method="POST">
+<form action="{{route('games.update', $games->id)}}" method="POST">
     @csrf
-    @if($game)
+    @if($games)
         @method('PUT')
     @endif
 

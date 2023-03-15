@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $category_id
  * @property string $image
  * @property int $price
+ * @method static latest()
  */
 
 class Product extends Model
