@@ -1,9 +1,9 @@
 
-<h1>{{__('names.gamesce')}} {{__('names.editing')}} {{$paymentsType->name}}</h1>
+<h1>{{__('names.gamesce')}} {{__('names.editing')}} {{$paymentsTypes->name}}</h1>
 <span>{{__('names.editingform')}}</span>
-<form action="{{route('paymenttypes.update', $paymentsType->id)}}" method="POST">
+<form action="{{route('paymenttypes.update', $paymentsTypes->id)}}" method="POST">
     @csrf
-    @if($paymentsType)
+    @if($paymentsTypes)
         @method('PUT')
     @endif
 

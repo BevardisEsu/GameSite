@@ -10,18 +10,18 @@ class ProductController extends Controller
 {
     public function index(){
         $product = Product::query()->with(['product'])->get();
-        return view('product.index',compact('product'));
+        return view('products.index',compact('product'));
     }
     public function create(){
 
-        return view('product.create');
+        return view('products.create');
     }
     public function store(Request $request){
         $product = Product::create($request->all);
-        return redirect()->route('product.show',$product);
+        return redirect()->route('products.show',$product);
     }
     public function edit(Product $product){
-        return view('product.edit',compact('product'));
+        return view('products.edit',compact('product'));
     }
     public function update(Request $request,Product $product){
 
@@ -32,9 +32,9 @@ class ProductController extends Controller
     }
     public function destroy(Product $product){
         $product ->delete();
-        return redirect()->route('product.show');
+        return redirect()->route('products.show');
     }
     public function show(Product $product){
-        return view('product.show',['product'=>$product]);
+        return view('products.show',['product'=>$product]);
     }
 }

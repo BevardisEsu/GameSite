@@ -39,7 +39,9 @@ return [
                 //payment types
     'paymenttypesce'=>'Payment Types',
 
+                //Products
     'products'=> 'Products',
+    'productsce'=>'Products creation',
     'payments'=> 'Payments',
     ''
 
