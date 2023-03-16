@@ -4,6 +4,7 @@ use App\Http\Controllers\Administrator\CategoryController;
 use App\Http\Controllers\Administrator\DashboardController;
 use App\Http\Controllers\Administrator\GameController;
 use App\Http\Controllers\Administrator\OrderController;
+use App\Http\Controllers\Administrator\PaymentController;
 use App\Http\Controllers\Administrator\PaymentTypeController;
 use App\Http\Controllers\Administrator\ProductController;
 use App\Http\Controllers\Administrator\ProfileController;
@@ -55,7 +56,8 @@ Route::middleware('auth')->group(function () {
             'orders'       => OrderController::class,
             'statuses'     => StatusController::class,
             'users'        => UserController::class,
-            'paymentTypes' => PaymentTypeController::class,
+            'payments'     => PaymentController::class,
+            'paymenttypes' => PaymentTypeController::class,
             'games'        => GameController::class
         ]);
     });

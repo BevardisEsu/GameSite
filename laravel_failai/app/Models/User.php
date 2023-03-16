@@ -81,4 +81,7 @@ class User extends Authenticatable
 
         return $this->hasMany(Order::class);
     }
+    public function status(){
+        return $this->belongsTo(Status::class);
+    }
 }

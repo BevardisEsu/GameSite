@@ -10,28 +10,28 @@ use Illuminate\Http\Request;
 class PaymentTypeController extends Controller
 {
     public function index(){
-        $paymentTypes = PaymentType::query()->with(['paymentType'])->get();
-        return view('paymentType.index',compact('paymentTypes'));
+        $paymentsTypes = PaymentType::query()->with(['paymentsTypes'])->get();
+        return view('paymenttypes.index',compact('paymentsTypes'));
     }
     public function create(){
-        return view('paymentType.create');
+        return view('paymenttypes.create');
     }
     public function store(Request $request){
-        $paymentTypes = PaymentType::create($request->all());
-        return redirect()->route('paymentType.show',$paymentTypes);
+        $paymentsType = PaymentType::create($request->all());
+        return redirect()->route('paymenttypes.show',$paymentsType);
     }
-    public function edit(PaymentType $paymentType){
-        return view('paymentType.edit',compact('paymentType'));
+    public function edit(PaymentType $paymentsType){
+        return view('paymenttypes.edit',compact('paymentsType'));
     }
-    public function update(Request $request, PaymentType $paymentType){
-        $paymentType->update($request->all());
-        return redirect()->route('paymentType.show',$paymentType);
+    public function update(Request $request, PaymentType $paymentsType){
+        $paymentsType->update($request->all());
+        return redirect()->route('paymenttypes.show',$paymentsType);
     }
-    public function destroy(PaymentType $paymentType){
-        $paymentType->delete();
-        return redirect()->route('paymentType.index');
+    public function destroy(PaymentType $paymentsType){
+        $paymentsType->delete();
+        return redirect()->route('paymenttypes.index');
     }
-    public function show(PaymentType $paymentType){
-        return view('paymentType.show',['paymentType'=>$paymentType]);
+    public function show(PaymentType $paymentsTypes){
+        return view('paymenttypes.show',['paymentsTypes'=>$paymentsTypes]);
     }
 }

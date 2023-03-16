@@ -10,30 +10,29 @@ class StatusController extends Controller
 {
     public function index(){
         $status = Status::query()->with(['status'])->get();
-        return view('status.index',compact('status'));
+        return view('statuses.index',compact('status'));
     }
     public function create(){
-        return view('status.create');
+        return view('statuses.create');
     }
     public function store(Request $request)
     {
-        $status = new Status();
-        $status->name = $request->name;
-        $status->type = $request->type;
+        $status = Status::create($request->all());
+        return redirect()->route('statuses.show',$status);
     }
     public function edit(Status $status){
 
-        return view('status.edit',compact('status'));
+        return view('statuses.edit',compact('status'));
     }
     public function update(Request $request, Status $status){
         $status->update($request->all());
-        return redirect()->route('status.show',$status);
+        return redirect()->route('statuses.show',$status);
     }
     public function destroy(Status $status){
         $status->delete();
-        return redirect()->route('status.show');
+        return redirect()->route('statuses.show');
     }
     public function show(Status $status){
-        return view('status.show',['status'=>$status]);
+        return view('statuses.show',['status'=>$status]);
     }
 }

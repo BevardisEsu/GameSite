@@ -17,4 +17,7 @@ class PaymentType extends Model
         'name'
     ];
 
+    public function paymentsTypes(){
+        return $this->belongsTo(PaymentType::class);
+    }
 }
