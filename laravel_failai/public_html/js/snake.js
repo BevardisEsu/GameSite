@@ -76,12 +76,45 @@ function update(){
     if (snakeX <0 || snakeX >cols*blockSize ||snakeY <0 || snakeY > rows*blockSize) {
         gameOver = true;
         alert(failtext + Scoreboard)
+        $.ajax({
+            url: '/saveScore',
+            type: 'POST',
+            data: {
+                score: Scoreboard,
+                _token: csrfToken, // Include the CSRF token in the request body
+            },
+            success: function(response) {
+                // Handle the response from the server
+                console.log(response);
+            },
+            error: function(xhr, status, error) {
+                // Handle errors
+                console.log(xhr.responseText);
+            }
+        });
     }
 
     for(let i =0; i< snakeBody.length; i++) {
         if (snakeX === snakeBody[i][0] && snakeY ===snakeBody[i][1]){
             gameOver = true;
             alert(failEatText + Scoreboard)
+
+            $.ajax({
+                url: '/saveScore',
+                type: 'POST',
+                data: {
+                    score: Scoreboard,
+                    _token: csrfToken, // Include the CSRF token in the request body
+                },
+                success: function(response) {
+                    // Handle the response from the server
+                    console.log(response);
+                },
+                error: function(xhr, status, error) {
+                    // Handle errors
+                    console.log(xhr.responseText);
+                }
+            });
         }
     }
 
@@ -122,3 +155,10 @@ function placeFood() {
     foodX = Math.floor(Math.random() * cols) * blockSize; //Random X vietos generacija
     foodY = Math.floor(Math.random() * cols) * blockSize; //Random Y vietoj generacija
 }
+
+
+// Get the CSRF token from the page's meta tags
+var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+// Send an AJAX request to the scores route in your Laravel application
+

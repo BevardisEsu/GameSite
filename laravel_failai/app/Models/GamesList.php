@@ -9,27 +9,25 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property string $name
  * @property string $description
- * @property int $category_id
- * @property string $image
- * @property int $price
  * @method static latest()
  */
 
-class Product extends Model
+
+class GamesList extends Model
 {
     use HasFactory;
 
     protected $fillable = [
+
         'name',
         'description',
-        'category_id',
-        'image',
-        'price',
     ];
-    public function category(){
-        return $this->belongsTo(Categories::class);
+
+
+    public function games()
+    {
+        return $this->belongsTo(GamesList::class);
     }
-    public function products(){
-       return $this->belongsTo(Product::class);
-    }
+
+
 }

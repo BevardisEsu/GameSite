@@ -21,10 +21,17 @@ class Score extends Model
         'score',
         'status',
     ];
+
+    protected $table = 'scores';
+
     public function user(){
-        $this->belongsTo(User::class);
+       return $this->belongsTo(User::class);
     }
     public function game(){
-        $this->belongsTo(GamesList::class);
+       return $this->belongsTo(GamesList::class);
     }
+    public function scores(){
+        return $this->belongsTo(Score::class);
+    }
+
 }

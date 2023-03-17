@@ -9,16 +9,27 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function index(){
-        $product = Product::query()->with(['product'])->get();
-        return view('products.index',compact('product'));
+        $products = Product::query()->with(['products'])->get();
+        return view('products.index',compact('products'));
     }
     public function create(){
 
         return view('products.create');
     }
-    public function store(Request $request){
-        $product = Product::create($request->all);
-        return redirect()->route('products.show',$product);
+    public function store(Request $request)
+    {
+        $product = new Product;
+        $product->name = $request->input('name');
+        $product->description = $request->input('description');
+        $product->category_id = $request->input('category_id');
+        if ($request->hasFile('picture')) {
+            $imagePath = $request->file('picture')->store('public_html/img/products'); // store the file in the storage/app/public/images directory
+            $product->image = $imagePath;
+        }
+        $product->price = $request->input('price');
+        $product->save();
+
+        return redirect()->route('products.index');
     }
     public function edit(Product $product){
         return view('products.edit',compact('product'));
@@ -32,7 +43,7 @@ class ProductController extends Controller
     }
     public function destroy(Product $product){
         $product ->delete();
-        return redirect()->route('products.show');
+        return redirect()->route('products.index');
     }
     public function show(Product $product){
         return view('products.show',['product'=>$product]);

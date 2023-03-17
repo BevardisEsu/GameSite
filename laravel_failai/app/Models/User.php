@@ -63,6 +63,10 @@ class User extends Authenticatable
 
     public const ROLE_DEFAULT = self::ROLE_USER;
 
+    public function isUser(){
+        return $this->role === self::ROLE_USER;
+    }
+
     public function isAdmin(){
        return $this->role === self::ROLE_ADMIN;
    }

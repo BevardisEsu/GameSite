@@ -17,6 +17,9 @@
         </label><br>
 
         <label>
+            <input type="file" name="picture" placeholder="Image" value="">
+        </label><br>
+        <label>
             <input type="text" name="price" placeholder="Price" value="">
         </label><br>
     </div>
