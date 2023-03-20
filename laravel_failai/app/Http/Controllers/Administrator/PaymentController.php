@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Administrator;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PaymentsRequest;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 
@@ -23,22 +24,22 @@ class PaymentController extends Controller
         $payment = Payment::create($request->all());
         return redirect()->route('payments.show',$payment);
     }
-    public function edit(Payment $payment)
+    public function edit(PaymentsRequest $payment)
     {
         return view('payments.edit',compact('payment'));
     }
-    public function update(Request $request, Payment $payment)
+    public function update(Request $request, PaymentsRequest $payment)
     {
         $payment->update($request->all());
         return redirect()->route('payments.show',$payment);
     }
-    public function destroy(Payment $payment)
+    public function destroy(PaymentsRequest $payment)
     {
         $payment ->delete();
         return redirect()->route('payments.index');
     }
 
-    public function show(Payment $payment){
+    public function show(PaymentsRequest $payment){
 
         return view('payments.show',['payment'=>$payment]);
     }

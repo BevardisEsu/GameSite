@@ -2,6 +2,8 @@
 
 let Scoreboard =0
 
+let game_id = 1;
+
 let failEatText = 'Tried eating yourself, huh? anyways, your score is:'
 let failtext = 'Congratulations, you failed, your score is:'
 //board
@@ -138,6 +140,7 @@ function sendScore(){
         type: 'POST',
         data: {
             score: Scoreboard,
+            game_id,
             _token: csrfToken, // Include the CSRF token in the request body
         },
         success: function(response) {

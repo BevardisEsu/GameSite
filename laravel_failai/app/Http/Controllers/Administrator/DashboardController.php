@@ -26,7 +26,7 @@ class DashboardController extends Controller
         $latestStatus = Status::latest()->take(1)->get();
         $latestUser = User::latest()->take(1)->get();
 
-        return view('administrator.dashboard',compact('latestCategory','latestGame','latestOrder',
+        return view('admin.dashboard',compact('latestCategory','latestGame','latestOrder',
         'latestPayment','latestProduct','latestScore','latestStatus','latestUser'));
     }
 }

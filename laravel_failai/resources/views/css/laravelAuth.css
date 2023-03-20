@@ -1,0 +1,37 @@
+body {
+    margin: 0;
+    background-image: url("../../../public_html/img/background.jpg");
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container div {
+    margin: 10px 0;
+}
+
+.container input[type="email"],
+.container input[type="password"],
+.container input[type="checkbox"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.container input[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+}
+

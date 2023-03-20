@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administrator;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductsRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -31,21 +32,21 @@ class ProductController extends Controller
 
         return redirect()->route('products.index');
     }
-    public function edit(Product $product){
+    public function edit(ProductsRequest $product){
         return view('products.edit',compact('product'));
     }
-    public function update(Request $request,Product $product){
+    public function update(Request $request,ProductsRequest $product){
 
         $product->update($request->all());
         //TODO Reikia įdėti failo įdėjimo funkcionalumą
         $product->save();
         return redirect()->route('product.show',$product);
     }
-    public function destroy(Product $product){
+    public function destroy(ProductsRequest $product){
         $product ->delete();
         return redirect()->route('products.index');
     }
-    public function show(Product $product){
+    public function show(ProductsRequest $product){
         return view('products.show',['product'=>$product]);
     }
 }

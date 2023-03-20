@@ -9,8 +9,10 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../css/Wordle.css">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src="../js/jquery-3.6.4.js" defer> </script>
     <script src="../js/Wordle.js" defer> </script>
-    <title>Wordle project</title>
+    <title>{{__('messages.wordleTitle')}}</title>
 </head>
 <body>
 
@@ -18,7 +20,6 @@
 
 <!-- Žaidimo lentos struktūra -->
 <div id="game-container">
-    <div class="title-container"> Wordle</div> <!-- Konteineris kur laikysiu TITLE-->
     <div class="message-container"></div>      <!-- Konteineris kuris laiko Message-->
     <div class="tile-container"></div>         <!-- Konteineris kuris laiko Tile/įvedamų raidžių kvadratas -->
     <div class="key-container"></div>          <!-- Konteineris kuris laiko klaviatūros raides -->

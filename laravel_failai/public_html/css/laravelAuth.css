@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    background-image: url("https://media.istockphoto.com/id/1369249687/vector/abstract-dash-dot-maze-background.jpg?s=612x612&w=0&k=20&c=XxQQf6V3kG5Ko7YrquavotNoFG0gi_2Sm8GnrSMZIAY=");
+}
+.registerBlock{
+    /* Set width and height of the box */
+    width: 400px;
+    height: 250px;
+
+    /* Center the box horizontally and vertically */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    /* Add a border, padding, and background color */
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.block {
+    /* Set width and height of the box */
+    width: 400px;
+    height: 200px;
+
+    /* Center the box horizontally and vertically */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    /* Add a border, padding, and background color */
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+
+
+.container div {
+    margin: 10px 0;
+}
+
+.container input[type="email"],
+.container input[type="password"],
+.container input[type="checkbox"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.container input[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+}

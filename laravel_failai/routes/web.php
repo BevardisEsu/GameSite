@@ -12,8 +12,8 @@ use App\Http\Controllers\Administrator\ScoresController;
 use App\Http\Controllers\Administrator\StatusController;
 use App\Http\Controllers\Administrator\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Middleware\isPersonel;
-use App\Http\Middleware\IsUser;
 use App\Http\Middleware\SetLocale;
 use Illuminate\Support\Facades\Route;
 
@@ -29,19 +29,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => SetLocale::class], function () {
-    Route::group(['prefix' => 'user', 'middleware' => ['auth', 'verified', IsUser::class]], function () {
-    Route::get('/', HomeController::class)->name('home');
-    Route::view('/wordle', 'wordle.wordle');
-    Route::view('/snake', 'snake.snake');
-    Route::view('/sudoku', 'sudoku.sudoku');
-    Route::view('/header', 'layouts.header');
-    Route::view('/body', 'layouts.body');
-            });
-
-
-/*Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');*/
+    require __DIR__.'/auth.php';
+    Route::get('/switch-language/{lang}', [LanguageController::class,'setLanguage'])->name('setLanguage');
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/home', function () {
+            return view('home');
+        });
+    });
+    Route::middleware(['auth'])->prefix('games')->group(function () {
+        Route::get('/snake', function () {
+            return view('gamesList.snake');
+        });
+        Route::get('/sudoku', function () {
+            return view('gamesList.sudoku');
+        });
+        Route::get('/wordle', function () {
+            return view('gamesList.wordle');
+        });
+    });
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -53,6 +58,7 @@ Route::middleware('auth')->group(function () {
 
     Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified', isPersonel::class]], function () {
         Route::get('/', DashBoardController::class)->name('dashboard');
+
         Route::delete('/product/file/{file}', [ProductController::class, 'destroyFile'])->name('product.destroy-file');
         Route::resources([
             'products'     => ProductController::class,
@@ -76,7 +82,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
 });
 Route::post('/saveScore', [ScoresController::class, 'saveScore'])->name('saveScore');
+Route::get('/home', [ScoresController::class,'countScores'])->name('countScores');
+Route::get('/logout', function () {
+    session()->flush();
+    return redirect('/login');
 
-require __DIR__.'/auth.php';
+});
+

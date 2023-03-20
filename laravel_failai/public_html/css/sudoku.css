@@ -66,3 +66,27 @@ hr{
 .vertical-line{
     border-right: 1px solid black;
 }
+
+.message-container{
+    height: 30px;
+}
+.message-container p {
+    background-color: #34ce57;
+    border-radius: 20px;
+    padding: 8px;
+    margin: 0;
+}
+
+
+#check-button {
+    background-color: blue;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}

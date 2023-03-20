@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administrator;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PaymentTypesRequest;
 use App\Models\PaymentsTypes;
 use Illuminate\Http\Request;
 
@@ -19,18 +20,18 @@ class PaymentTypeController extends Controller
         $paymentsType = PaymentsTypes::create($request->all());
         return redirect()->route('paymenttypes.show',$paymentsType);
     }
-    public function edit(PaymentsTypes $paymentsTypes){
+    public function edit(PaymentTypesRequest $paymentsTypes){
         return view('paymenttypes.edit',compact('paymentsTypes'));
     }
-    public function update(Request $request, PaymentsTypes $paymentsType){
+    public function update(Request $request, PaymentTypesRequest $paymentsType){
         $paymentsType->update($request->all());
         return redirect()->route('paymenttypes.show',$paymentsType);
     }
-    public function destroy(PaymentsTypes $paymentsType){
+    public function destroy(PaymentTypesRequest $paymentsType){
         $paymentsType->delete();
         return redirect()->route('paymenttypes.index');
     }
-    public function show(PaymentsTypes $paymentsType){
+    public function show(PaymentTypesRequest $paymentsType){
         return view('paymenttypes.show',['paymentsType'=>$paymentsType]);
     }
 }

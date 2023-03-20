@@ -1,42 +1,54 @@
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/body.css">
+    <title>{{__('messages.home')}}</title>
+</head>
+<body>
 
+<div
+    class="container">
+    <div class="header">
 
-<h1>Sveiki atvyke į home puslapį</h1>
-
-<br>
-<br>
-
-
-<div id="top_produktai"> </div>
-<script>
-    $(document).ready(function () {
-        $.ajax({
-            url: "/api/top_produktai",
-            type: "GET",
-            success: function (data) {
-                let produktai = data.data;
-                let produktuHtml = '';
-                for (let i = 0; i < produktai.length; i++) {
-                    let produktas = produktai[i];
-                    produktuHtml += `
-                    <div class="flex flex-col justify-between items-center">
-                        <div class="flex justify-center items-center">
-                            <img src="${produktas.image}" alt="product" class="w-40 h-40">
-                        </div>
-                        <div class="flex flex-col justify-center items-center">
-                            <p class="font-medium text-base leading-4 text-gray-800 dark:text-white">${produktas.name}</p>
-                            <p class="font-normal text-sm leading-3 text-gray-600 dark:text-gray-300">${produktas.price} €</p>
-                        </div>
-                    </div>
-                `;
-                }
-                $('#top_produktai').html(produktuHtml);
-            },
-            error: function (xhr, status, error) {
-                console.log(xhr.responseText);
-            }
-        });
-    });
-
-</script>
-@csrf
+        <nav>
+            <ul>
+                <li><a href="/">{{__('messages.home')}}</a></li>
+                <li><a href="">{{__('messages.rules')}}</a></li>
+                <li><a href="#">{{__('messages.portfolio')}}'</a></li>
+                <li><a href="/logout">{{__('login.logout')}}</a></li>
+                    <span class="highestScore"> High score on snake is by: {{$highestScoreSnake->name}} and score is: {{$highestScoreSnake->score}}</span>
+            </ul>
+        </nav>
+    </div>
+    <div class="content-large"><p>Snake</p>
+        <img src="https://png.pngtree.com/png-vector/20210112/ourlarge/pngtree-green-snake-game-logo-png-image_2715848.jpg" alt="foto" class="photo">
+        <p>{{__('messages.timesPlayed')}}:{{$userCountSnake}}<br></p>
+        <p>{{__('messages.highScore')}}:{{$highScoreSnake}}</p>
+        <form action="/games/snake" method="get">
+            <button type="submit">{{__('messages.playSnake')}}</button>
+        </form>
+    </div>
+    <div class="content-large"><p>Wordle</p>
+        <img src="https://cdn.theatlantic.com/thumbor/ywSwAEsEZdSatDtU2riiM7smYLc=/0x0:1952x1098/960x540/media/img/mt/2022/01/wordle-1/original.jpg" alt="foto" class="photo">
+        <p>{{__('messages.timesPlayed')}}:{{$userCountWordle}}<br></p>
+        <p>{{__('messages.highScore')}}:{{$highScoreWordle}}</p>
+        <form action="/games/wordle" method="get">
+            <button type="submit">{{__('messages.playWordle')}}</button>
+        </form>
+    </div>
+    <div class="content-large"><p>Sudoku</p>
+        <img src="https://c8.alamy.com/comp/P2A3RF/sudoku-vector-icon-isolated-on-transparent-background-sudoku-logo-concept-P2A3RF.jpg" alt="foto" class="photo">
+        <p>{{__('messages.timesPlayed')}}:{{$userCountSudoku}}<br></p>
+        <p>{{__('messages.highScore')}}:{{$highScoreSudoku}}</p>
+        <form action="/games/sudoku" method="get">
+            <button type="submit">{{__('messages.playSudoku')}}</button>
+        </form>
+    </div>
+    <div class="footer"><h2>{{__('messages.footer')}}</h2></div>
+</div>
+</body>
+</html>

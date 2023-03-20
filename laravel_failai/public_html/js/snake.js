@@ -2,6 +2,8 @@
 
 let Scoreboard =0
 
+let game_id = 1;
+
 let failEatText = 'Tried eating yourself, huh? anyways, your score is:'
 let failtext = 'Congratulations, you failed, your score is:'
 //board
@@ -76,45 +78,16 @@ function update(){
     if (snakeX <0 || snakeX >cols*blockSize ||snakeY <0 || snakeY > rows*blockSize) {
         gameOver = true;
         alert(failtext + Scoreboard)
-        $.ajax({
-            url: '/saveScore',
-            type: 'POST',
-            data: {
-                score: Scoreboard,
-                _token: csrfToken, // Include the CSRF token in the request body
-            },
-            success: function(response) {
-                // Handle the response from the server
-                console.log(response);
-            },
-            error: function(xhr, status, error) {
-                // Handle errors
-                console.log(xhr.responseText);
-            }
-        });
+        sendScore()
+
     }
 
     for(let i =0; i< snakeBody.length; i++) {
         if (snakeX === snakeBody[i][0] && snakeY ===snakeBody[i][1]){
             gameOver = true;
             alert(failEatText + Scoreboard)
+            sendScore()
 
-            $.ajax({
-                url: '/saveScore',
-                type: 'POST',
-                data: {
-                    score: Scoreboard,
-                    _token: csrfToken, // Include the CSRF token in the request body
-                },
-                success: function(response) {
-                    // Handle the response from the server
-                    console.log(response);
-                },
-                error: function(xhr, status, error) {
-                    // Handle errors
-                    console.log(xhr.responseText);
-                }
-            });
         }
     }
 
@@ -123,7 +96,7 @@ function update(){
 
 
 
-    // Judėjimo funkcija
+// Judėjimo funkcija
 function changeDirection(e){
 
     if (e.code === "ArrowUp" && velocityY !==1){
@@ -150,7 +123,7 @@ function addScore(){
 }
 
 
- // Funkcija kuri padės gyvatės maistą random vietoje
+// Funkcija kuri padės gyvatės maistą random vietoje
 function placeFood() {
     foodX = Math.floor(Math.random() * cols) * blockSize; //Random X vietos generacija
     foodY = Math.floor(Math.random() * cols) * blockSize; //Random Y vietoj generacija
@@ -161,4 +134,23 @@ function placeFood() {
 var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
 // Send an AJAX request to the scores route in your Laravel application
+function sendScore(){
+    $.ajax({
+        url: '/saveScore',
+        type: 'POST',
+        data: {
+            score: Scoreboard,
+            game_id,
+            _token: csrfToken, // Include the CSRF token in the request body
+        },
+        success: function(response) {
+            // Handle the response from the server
+            console.log(response);
+        },
+        error: function(xhr, status, error) {
+            // Handle errors
+            console.log(xhr.responseText);
+        }
+    });
 
+}

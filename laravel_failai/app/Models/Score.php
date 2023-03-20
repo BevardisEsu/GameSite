@@ -34,4 +34,15 @@ class Score extends Model
         return $this->belongsTo(Score::class);
     }
 
+    public function getMinimumScore($user_id) {
+        return Score::where('user_id', $user_id)->min('score');
+    }
+    public function getMaximumScore($user_id) {
+        return Score::where('user_id', $user_id)->max('score');
+    }
+
+
+
+
+
 }

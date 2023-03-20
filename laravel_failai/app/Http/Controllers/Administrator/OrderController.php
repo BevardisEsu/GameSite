@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administrator;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\OrderRequest;
 use App\Models\Order;
 use App\Models\Status;
 use Illuminate\Http\Request;
@@ -27,18 +28,18 @@ class OrderController extends Controller
 
         return redirect()->route('orders.show',$order);
     }
-    public function edit(Order $order){
+    public function edit(OrderRequest $order){
         return view('orders.edit',compact('order'));
     }
-    public function update(Request $request,Order $order){
+    public function update(Request $request,OrderRequest $order){
         $order->update($request->all());
         return redirect()->route('orders.show',$order);
     }
-    public function destroy(Order $order){
+    public function destroy(OrderRequest $order){
         $order->delete();
         return redirect()->route('orders.index');
     }
-    public function show(Order $order){
+    public function show(OrderRequest $order){
         return view('orders.show',['orders'=>$order]);
     }
 

@@ -7,6 +7,9 @@ const words = ['SUPER', 'VYRAS', 'LAUKAS', 'KALBA','PIEVA','DUGNAS','GERTI','PAS
 'TAVAS','AKLAS','KARTU','MIELI','VAKAR','SAUSA','MATOM','RUDUO','MEDIS','KARAS','TAMSA','GAUJA','KAINA',]
 const wordle = getRandomWord(words); //Kviečiama funkcija kuri parenka atsitiktinį žodį
 
+let game_id = 2;
+let Scoreboard=0;
+var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
 // Klaviatūros mygtukai
 const keys = [
@@ -97,12 +100,20 @@ const checkRow = () => {
         flipTile() // Kiekvienai pasirinktai raidei priskiria flip tile funkciją
         if (wordle === guess) {
             showMessage('Congratulations, your guess was correct!') //Jei žodis teisingas, rodo šį tekstą message konteineryje
+
+            Scoreboard += 10;
+
+            sendScore()
             isGameOver = true // Žaidimas pasibaigia
 
         } else {
             if (currentRow >= 5) { // tikrina ar jau paskautinis spėjimas
                 isGameOver = false // Jei neatspėjamas žodis, žaidimą sustabdo, kad nustotų veikti JS
                 showMessage('Better luck next time!') // Išspausdinama pralaimėjimo žinutė
+
+                Scoreboard = 0
+
+                sendScore();
                 return
             }
             if (currentRow < 5) {
@@ -146,4 +157,24 @@ const flipTile = () =>{
             }
         },500 * index)
     })
+}
+function sendScore(){
+    $.ajax({
+        url: '/saveScore',
+        type: 'POST',
+        data: {
+            score: Scoreboard,
+            game_id,
+            _token: csrfToken, // Include the CSRF token in the request body
+        },
+        success: function(response) {
+            // Handle the response from the server
+            console.log(response);
+        },
+        error: function(xhr, status, error) {
+            // Handle errors
+            console.log(xhr.responseText);
+        }
+    });
+
 }
