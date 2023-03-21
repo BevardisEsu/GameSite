@@ -1,39 +1,139 @@
-html{
+html{       /* Setting html tag for full height */
     height: 100%;
 }
-body{
+body{       /* Setting body to full height and item placement centered */
     height: 100%;
-    display: grid;
+
     place-items: center;
 }
-h1{
+h1{         /* Setting red color for h1 elements */
     color: red;
+}
+.container {     /*fullscreen settings, text decorations, displaying as grid, so 3x3, grids are 100px wide and one third of the screen in height, there is set gap for 10px and simple black line arround box */
+    width: 100%;
+    height: 100vh;
+    font-family: 'Quicsand', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: 100px 1fr 1fr 100px;
+    gap: 10px;
+    box-sizing: border-box;
+    background-color: #457b9d;
+
+}
+
+.content-large{  /*Setting where will it start at grid and where it will end, all the items will be centered */
+    grid-row-start: 2;
+    grid-row-end: span 2;
+    justify-items: center;
+    align-items: center;
+    border: 1px solid black;
+}
+.content-large.p{   /*Setting style for p elements inside divs */
+    align-items: center;
+    justify-content: center;
+
+    font-family: 'Quicsand',sans-serif;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+/* Headeris */
+
+.header {   /* header layout , setting where it will sit on grid, setting width and height of header, displaying as flex, setting space between links, alligning in the center */
+
+    grid-column-start: 1;
+    grid-column-end: 4;
+
+    width: 100%;
+    height: 79%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: #333;
+    color: #fff;
 }
 
 
-.title-container{
+nav ul {     /* Setting display as flex, list style setting none, so there would be no bubbles or other materials near links */
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {     /* Leaving a little margin from right side */
+    margin-right: 15px;
+}
+
+nav li:last-child {     /*leaving margin to zero for last item */
+    margin-right: 0;
+}
+
+nav a { /* displaying as solid block, setting space between content to 5px */
+    display: block;
+    padding: 5px;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out;
+}
+
+nav a:hover {   /* just settings colors when hovering on */
+    background-color: #fff;
+    color: #333;
+}
+
+
+
+
+
+.footer{    /*Setting start and end on grid, setting width and height, displaying as flex, space between elements and aligned in center */
+
+
+    grid-column-start: 1;
+    grid-column-end: 4;
+
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #333;
+    color: #fff;
+}
+
+
+
+.title-container{   /* Setting title container parameters */
     text-align: center;
     width: 510px;
     border-bottom: solid 1px black;
 }
-.game-container{
+.game-container{    /*Setting game container parameters */
     height: 90%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
-.tile-container{
+.tile-container{    /*setting tile container parameters*/
     width: 330px;
     margin-bottom: 30px;
 }
-.key-container{
+.key-container{     /*Setting key container parameters */
     width: 510px;
     display: flex;
     flex-wrap: wrap;
 }
 
-.key-container button{
+.key-container button{  /*Setting key container button parameters */
     width: 43px;
     height: 58px;
     border-radius: 4px;
@@ -41,22 +141,22 @@ h1{
 
     margin: 4px;
 }
-.key-container button:nth-child(11){
+.key-container button:nth-child(11){    /*Setting keyboards 11-th element to have this parameter */
     margin-left: 50px;
 }
-.key-container button:nth-child(27){
+.key-container button:nth-child(27){    /*Setting keyboards 27 element to have this parameter */
     width: 60px;
 }
 
-.key-container button:nth-child(28){
+.key-container button:nth-child(28){ /*Setting keyboards 28 element to have this parameter */
     width: 70px;
 }
 
-.tile-container div{
+.tile-container div{ /*Setting tile container to display flex */
     display: flex;
 }
 
-.tile-container .tile {
+.tile-container .tile { /*setting tile container parameters */
     width: 62px;
     height: 62px;
     border: 2px solid black;
@@ -66,21 +166,21 @@ h1{
     align-items: center;
     margin: 2px;
 }
-.message-container{
+.message-container{ /*yeah, setting message container parameters */
     height: 30px;
 }
 
-.message-container p {
+.message-container p {  /*decorate text for p elements inside message container */
     background-color: #34ce57;
     border-radius: 20px;
     padding: 8px;
     margin: 0;
 }
 
-.tile.flip {
+.tile.flip {    /*Flipping tile animation */
     animation:0.5s linear flipping;
 }
-@keyframes flipping {
+@keyframes flipping {   /*Setting rotating animation for flipping function */
     0%{
         transform:rotateX(0deg);
     }
@@ -93,15 +193,15 @@ h1{
 
 }
 
-.grey-overlay{
+.grey-overlay{      /*Setting grey overlay */
     background-color: #343a40;
     border:none
 }
-.yellow-overlay{
+.yellow-overlay{    /*Setting yellow overlay */
     background-color: #c69500;
     border: none
 }
-.green-overlay{
+.green-overlay{     /*Setting green overlay */
     background-color: #28a745;
     border: none;
 }

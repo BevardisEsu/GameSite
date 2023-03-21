@@ -16,9 +16,8 @@
 
         <nav>
             <ul>
-                <li><a href="/">{{__('messages.home')}}</a></li>
-                <li><a href="">{{__('messages.rules')}}</a></li>
-                <li><a href="#">{{__('messages.portfolio')}}'</a></li>
+                <li><a href="/home">{{__('messages.home')}}</a></li>
+                <li><a href="../../public_html/files/CV.pdf" download>{{__('messages.portfolio')}}</a></li>
                 <li><a href="/logout">{{__('login.logout')}}</a></li>
                     <span class="highestScore"> High score on snake is by: {{$highestScoreSnake->name}} and score is: {{$highestScoreSnake->score}}</span>
             </ul>

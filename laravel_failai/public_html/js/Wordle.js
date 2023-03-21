@@ -3,22 +3,23 @@ const keyboard = document.querySelector('.key-container')
 const messageDisplay = document.querySelector('.message-container')
 
 // Galimų žodžių mąsyvas
-const words = ['SUPER', 'VYRAS', 'KALBA','PIEVA','GERTI','PASAS', 'KILTI','NULIS',
+const words = ['SUPER', 'VYRAS', 'KALBA','PIEVA','GERTI','PASAS', 'KILTI','NULIS',  //words array that is hardcoded
     'TAVAS','AKLAS','KARTU','MIELI','VAKAR','SAUSA','MATOM','RUDUO','MEDIS','KARAS','TAMSA','GAUJA','KAINA',]
 const wordle = getRandomWord(words); //Kviečiama funkcija kuri parenka atsitiktinį žodį
 
-let game_id = 2;
-let Scoreboard=0;
+let game_id = 2;    //hardcoded game id
+let Scoreboard=0;   //scoreboard is zero
 
 
-
-// Klaviatūros mygtukai
-const keys = [
+window.onload=function (){  //loads function changegiphy
+    changeGiphy()
+}
+const keys = [  //keyboard buttons that are available in game
     'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D',
     'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'ENTER', '<<',
 ];
 
-// Wordle žaidimo struktūra 5x6
+//Game board, structure to be 5x6
 const guessRows = [
     ['', '', '', '', ''],
     ['', '', '', '', ''],
@@ -27,62 +28,62 @@ const guessRows = [
     ['', '', '', '', ''],
     ['', '', '', '', ''],
 ]
-let currentRow = 0
-let currentTile = 0
+let currentRow = 0  //just a variable
+let currentTile = 0 //just a variable
 let isGameOver = false
-guessRows.forEach((guessRow, guessRowIndex) => {
-    const rowElement = document.createElement('div')
-    rowElement.setAttribute('id', 'guessRow-' + guessRowIndex)
+guessRows.forEach((guessRow, guessRowIndex) => {    //function for selecting boards first element, after inputing letter it selects second until it reaches end
+    const rowElement = document.createElement('div')    //creates div element for individual guess element
+    rowElement.setAttribute('id', 'guessRow-' + guessRowIndex)  //sets attributes same as divs classes
     guessRow.forEach((guess, guessIndex) => {
-        const tileElement = document.createElement('div')
-        tileElement.setAttribute('id', 'guessRow-' + guessRowIndex + '-tile-' + guessIndex)
+        const tileElement = document.createElement('div')     // Creates tile element as dif
+        tileElement.setAttribute('id', 'guessRow-' + guessRowIndex + '-tile-' + guessIndex) // Gives attributes as above
         tileElement.classList.add('tile')
-        rowElement.append(tileElement)
+        rowElement.append(tileElement)  // end result creates five divs within five divs, so it creates game board
     })
-    tileDisplay.append(rowElement)
+    tileDisplay.append(rowElement) //displays created elements
 })
 
 function getRandomWord(words) {
-    return words[Math.floor(Math.random() * words.length)];
+    return words[Math.floor(Math.random() * words.length)];  //Function for taking random word from array
 }
 
-// Klaviatūros logika
+// Keyboard logic
 keys.forEach(key => {
-    const buttonElement = document.createElement('button') // Sukuria kiekvienai raidei atskirą mygtuką
-    buttonElement.textContent = key;
-    buttonElement.setAttribute('id', key); // Priskiria kiekvienam mygtukui ID pagal jo raidę
-    buttonElement.addEventListener('click', () => handleClick(key)); // Fiksuoja kada ir koks mygtukas buvo paspaustas
-    keyboard.append(buttonElement); // Išspausdina klaviatūros mygtukus
+    const buttonElement = document.createElement('button') // Creates for each letter different element
+    buttonElement.textContent = key;    //applies key as it's element
+    buttonElement.setAttribute('id', key); // Applies for every button the id of key
+    buttonElement.addEventListener('click', () => handleClick(key)); // When button gets clicked, it registers that with click
+    keyboard.append(buttonElement); // Displays all the keyboard elements
 })
 
 
-// Aprašoma ištrynimo mygtuko funkcija
-const handleClick = (key) => {
+
+const handleClick = (key) => {  //defines << button with delete function
     console.log('clicked', key);
     if (key === '<<') {
         deleteLetter()
         return
     }
-    // Aprašoma Enter mygtuko funkcija
-    if (key === 'ENTER') {
+
+    if (key === 'ENTER') {  //defines ENTER button with function checkRow
         checkRow()
         return
     }
-    addLetter(key)
+    addLetter(key) //if letter isn't << or ENTER then it adds selected letter
 }
 
-// Logika, kai paspaudžiamas mygtukas, kad jis įsivestų į laukelį
-const addLetter = (letter) => {
-    if (currentTile < 5 && currentRow < 6) {
-        const tile = document.getElementById('guessRow-' + currentRow + '-tile-' + currentTile)
+
+const addLetter = (letter) => {     //Function for putting clicked element inside the games main guess board
+    if (currentTile < 5 && currentRow < 6) { //If it's below five and six, only then we can add letter
+        const tile = document.getElementById('guessRow-' + currentRow + '-tile-' + currentTile) //Finds the tile that we need to put letter in
         tile.textContent = letter
-        guessRows[currentRow][currentTile] = letter
-        tile.setAttribute('data', letter)
-        currentTile++
+        guessRows[currentRow][currentTile] = letter     //It selects the first tile in guessrow array
+        tile.setAttribute('data', letter)   //Each dives gets a letter, it is used for coloring
+        currentTile++ //after one letter, it moves up to second tile so we can put letter there
     }
 }
 
-const deleteLetter = () => {
+const deleteLetter = () => {    //function for << to delete letter
     if (currentTile > 0) {
         currentTile--
         const tile = document.getElementById('guessRow-' + currentRow + '-tile-' + currentTile)
@@ -91,7 +92,7 @@ const deleteLetter = () => {
         tile.setAttribute('data', '')
     }
 }
-// Žaidimo pabaigos logika
+// End game logic
 const checkRow = () => {
     const guess = guessRows[currentRow].join('')
 
@@ -145,7 +146,7 @@ const flipTile = () =>{
         const dataLetter = tile.getAttribute('data')
 
         setTimeout(()=> {
-            tile.classList.add('flip')
+            tile.classList.add('flip')  //all the animations, checks letters and it paints with specific color
             if (dataLetter === wordle[index]) {
                 tile.classList.add('green-overlay')
                 addColorToKey(dataLetter, 'green-overlay')
@@ -156,7 +157,7 @@ const flipTile = () =>{
                 tile.classList.add('grey-overlay')
                 addColorToKey(dataLetter, 'grey-overlay')
             }
-        },500 * index)
+        },500 * index)  //timeout for animations
     })
 }
 
@@ -180,5 +181,16 @@ function sendScore(){
             console.log(xhr.responseText);
         }
     });
-
 }
+var giphyArray = [
+    "https://media3.giphy.com/media/j0XiH9qn8HFd03pP8s/giphy.gif?cid=ecf05e47lx4udio8xkhm9s3ebwawkt94yhitczx34i29zae6&rid=giphy.gif&ct=g",
+    "https://media2.giphy.com/media/UtuC8ZVwmWa5fmGW3v/giphy.gif?cid=ecf05e47lwit2hca2mu7cgibm0i9xfbdei9l7ls0ucz7a2f6&rid=giphy.gif&ct=g",
+    "https://media3.giphy.com/media/pqn59DMS0KePu/giphy.gif?cid=ecf05e47y9posw63cf99t7viig8xm0l94bdmxv174nona0b6&rid=giphy.gif&ct=g",
+    "https://media2.giphy.com/media/dbtDDSvWErdf2/giphy.gif?cid=ecf05e47y9posw63cf99t7viig8xm0l94bdmxv174nona0b6&rid=giphy.gif&ct=g",
+];
+function changeGiphy() {    //check snake for functionality
+    var randomIndex = Math.floor(Math.random() * giphyArray.length);
+    var giphyImage = document.getElementById("giphy-image");
+    giphyImage.src = giphyArray[randomIndex];
+}
+

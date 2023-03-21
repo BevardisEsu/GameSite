@@ -1,13 +1,111 @@
-body{
+body{  /* Setting simple fullscreen body with customized fonts */
     font-family: Arial,Helvetica,sans-serif;
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
-hr{
-    width: 500px;
-}
-#errors{
+#errors{ /* Setting color for errors */
     color: red;
+}
+.container {     /*fullscreen settings, text decorations, displaying as grid, so 3x3, grids are 100px wide and one third of the screen in height, there is set gap for 10px and simple black line arround box */
+
+    width: 100%;
+    height: 100vh;
+    font-family: 'Quicsand', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: 100px 1fr 1fr 100px;
+    gap: 10px;
+    box-sizing: border-box;
+    background-color: #457b9d;
+
+}
+
+.content-large{     /*Setting where will it start at grid and where it will end, all the items will be centered */
+    grid-row-start: 2;
+    grid-row-end: span 2;
+    justify-items: center;
+    align-items: center;
+    border: 1px solid black;
+}
+.content-large.p{   /*Setting style for p elements inside divs */
+    align-items: center;
+    justify-content: center;
+
+    font-family: 'Quicsand',sans-serif;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+/* Headeris */
+
+.header {   /* header layout , setting where it will sit on grid, setting width and height of header, displaying as flex, setting space between links, alligning in the center */
+    grid-column-start: 1;
+    grid-column-end: 4;
+
+    width: 100%;
+    height: 79%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: #333;
+    color: #fff;
+}
+
+
+nav ul {     /* Setting display as flex, list style setting none, so there would be no bubbles or other materials near links */
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {     /* Leaving a little margin from right side */
+    margin-right: 15px;
+}
+
+nav li:last-child {  /*leaving margin to zero for last item */
+    margin-right: 0;
+}
+
+nav a {      /* displaying as solid block, setting space between content to 5px */
+    display: block;
+    padding: 5px;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out;
+}
+
+nav a:hover {        /* just settings colors when hovering on */
+    background-color: #fff;
+    color: #333;
+}
+
+
+
+
+
+.footer{        /*Setting start and end on grid, setting width and height, displaying as flex, space between elements and aligned in center */
+
+
+    grid-column-start: 1;
+    grid-column-end: 4;
+
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #333;
+    color: #fff;
 }
 
 /* Lentai nustatau po 450px, nes ji bus 9x9, 450/9 = 50px kvadratui */
@@ -19,7 +117,7 @@ hr{
     display: flex;
     flex-wrap: wrap;
 }
-.tile{
+.tile{      /*Setting tile parameter, font size and their placement inside div  */
     width: 48px;
     height: 48px;
     border: 1px solid black;
@@ -32,7 +130,7 @@ hr{
 }
 
 
-#digits{
+#digits{        /*Digits parameters, customization  */
     width: 450px;
     height: 50px;
     margin: 0 auto;
@@ -40,7 +138,7 @@ hr{
     flex-wrap: wrap;
 }
 
-.number{
+.number{        /*setting parameters for numbers  */
     width: 44px;
     height: 44px;
     border: 1px solid black;
@@ -53,24 +151,24 @@ hr{
     align-items: center;
 }
 
-.number-selected{
+.number-selected{   /* Setting color for selected number */
     background-color: grey;
 }
 
-.tile-start{
+.tile-start{        /* setting for preset tiles with number background color */
     background-color: whitesmoke;
 }
-.horizontal-line{
+.horizontal-line{      /* Just some lines */
     border-bottom: 1px solid black;
 }
-.vertical-line{
+.vertical-line{         /* Just some lines */
     border-right: 1px solid black;
 }
 
-.message-container{
+.message-container{     /* Setting parameter for messages */
     height: 30px;
 }
-.message-container p {
+.message-container p {      /* Setting text for messages */
     background-color: #34ce57;
     border-radius: 20px;
     padding: 8px;
@@ -78,15 +176,7 @@ hr{
 }
 
 
-#check-button {
-    background-color: blue;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
+.container.title{       /*setting size for title container  */
+    height: 100px;
+    width: 100%;
 }

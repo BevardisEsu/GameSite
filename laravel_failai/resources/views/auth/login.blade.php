@@ -28,11 +28,10 @@
                 <input id="remember_me" type="checkbox" name="remember" class="rememberMe"> <a>{{ __('login.rememberMe') }}</a>
             </label>
         </div>
-            <div class="loginButton">
             <button class="loginButton">
-                {{ __('logIn') }}
+                {{ __('login.logIn') }}
             </button>
-        </div>
+
         </div>
 
     </form>

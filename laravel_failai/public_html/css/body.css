@@ -1,6 +1,6 @@
 /*------------------- Body layoutas-------------------------- */
 
-body {
+body {      /* Body layout , margin and padding for fullscreen, font is font, setting color and background picture */
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
@@ -14,7 +14,7 @@ body {
 
                                     /* Headeris */
 
-.header {
+.header {               /* header layout , setting where it will sit on grid, setting width and height of header, displaying as flex, setting space between links, alligning in the center */
 
     grid-column-start: 1;
     grid-column-end: 4;
@@ -31,22 +31,22 @@ body {
 }
 
 
-nav ul {
+nav ul {            /* Setting display as flex, list style setting none, so there would be no bubbles or other materials near links */
     display: flex;
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-nav li {
+nav li {                /* Leaving a little margin from right side */
     margin-right: 15px;
 }
 
-nav li:last-child {
+nav li:last-child {     /*leaving margin to zero for last item */
     margin-right: 0;
 }
 
-nav a {
+nav a {                 /* displaying as solid block, setting space between content to 5px */
     display: block;
     padding: 5px;
     color: #fff;
@@ -54,13 +54,13 @@ nav a {
     transition: background-color 0.2s ease-in-out;
 }
 
-nav a:hover {
+nav a:hover {           /* just settings colors when hovering on */
     background-color: #fff;
     color: #333;
 }
 
 
-.container {
+.container {            /*fullscreen settings, text decorations, displaying as grid, so 3x3, grids are 100px wide and one third of the screen in height, there is set gap for 10px and simple black line arround box */
     width: 100%;
     height: 100%;
     font-family: 'Quicsand', sans-serif;
@@ -74,20 +74,20 @@ nav a:hover {
     background-color: #457b9d;
 
 }
-.container div{
+.container div{         /*setting space between content to 10px, simple border of solid black, alligning text in center */
     padding: 10px;
     border: 1px solid black;
     text-align: center;
 
 }
 
-.content-large{
+.content-large{         /*Setting where will it start at grid and where it will end, all the items will be centered */
     grid-row-start: 2;
     grid-row-end: span 2;
     justify-items: center;
     align-items: center;
 }
-.footer{
+.footer{                /*Setting start and end on grid, setting width and height, displaying as flex, space between elements and aligned in center */
 
     grid-column-start: 1;
     grid-column-end: 4;
@@ -103,12 +103,12 @@ nav a:hover {
     color: #fff;
 }
 
-.photo{
+.photo{             /*Setting photos of games to fit divs, centered */
     width: 200px;
     height: 200px;
     justify-content: center;
 }
-.content-large.p{
+.content-large.p{   /*Setting style for p elements inside divs */
     align-items: center;
     justify-content: center;
 
@@ -116,7 +116,7 @@ nav a:hover {
     font-weight: bold;
     font-size: 20px;
 }
-header.highestScore {
+.container.header.highestScore {  /*Setting highestscore to center, but it doesn't work for some reason */
     display: block;
     text-align: center;
     margin: 10px auto;

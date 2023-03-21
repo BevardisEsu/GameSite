@@ -9,8 +9,8 @@ return [
     'password'=>'Password',
     'confirmPassword'=>'Confirm Password',
     'rememberMe'=>'Remember me',
-    'logIn'=>'Login in',
-    'logout'=>'logout',
+    'logIn'=>'Login',
+    'logout'=>'Logout',
 
             //Register
 

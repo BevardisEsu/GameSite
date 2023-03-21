@@ -33,6 +33,7 @@ let solution =
 
 window.onload = function (){
     setGame();
+    changeGiphy()
 }
 
 // Sukuriami laukeliai kuriuose bus 1-9 skaiciai, juos bus galima naudoti žaidimui, kaip pasirinkimui
@@ -197,4 +198,18 @@ function sendScore(){
         // If we made it here, the board is a valid solution
         return true;
     }}
+
+var giphyArray = [
+    "https://media3.giphy.com/media/j0XiH9qn8HFd03pP8s/giphy.gif?cid=ecf05e47lx4udio8xkhm9s3ebwawkt94yhitczx34i29zae6&rid=giphy.gif&ct=g",
+    "https://media2.giphy.com/media/UtuC8ZVwmWa5fmGW3v/giphy.gif?cid=ecf05e47lwit2hca2mu7cgibm0i9xfbdei9l7ls0ucz7a2f6&rid=giphy.gif&ct=g",
+    "https://media3.giphy.com/media/pqn59DMS0KePu/giphy.gif?cid=ecf05e47y9posw63cf99t7viig8xm0l94bdmxv174nona0b6&rid=giphy.gif&ct=g",
+    "https://media2.giphy.com/media/dbtDDSvWErdf2/giphy.gif?cid=ecf05e47y9posw63cf99t7viig8xm0l94bdmxv174nona0b6&rid=giphy.gif&ct=g",
+    "https://media3.giphy.com/media/pqn59DMS0KePu/giphy.gif?cid=ecf05e47y9posw63cf99t7viig8xm0l94bdmxv174nona0b6&rid=giphy.gif&ct=g",
+];
+function changeGiphy() {
+    var randomIndex = Math.floor(Math.random() * giphyArray.length);
+    var giphyImage = document.getElementById("giphy-image");
+    giphyImage.src = giphyArray[randomIndex];
+}
+
 
