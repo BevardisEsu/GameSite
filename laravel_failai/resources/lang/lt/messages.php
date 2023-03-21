@@ -11,10 +11,10 @@ return [
 
 
 
-    'home'=>'Homaaaaae',
-    'rules'=>'Rulaaaaaes',
-    'portfolio'=>'Portfolaaaaaaio',
-    'footer'=>'2023 CodeAcaaaaaademy all licensed by V. Šeputis',
+    'home'=>'Home',
+    'rules'=>'Rules',
+    'portfolio'=>'Portfolio',
+    'footer'=>'2023 CodeAcademy licenzijuota V. Šepučio',
 
 
 
@@ -26,25 +26,25 @@ return [
 
     // Games messages
 
-    'highScore'=>'HighaaaaaScore',
-    'timesPlayed'=>'Tiaaames Played',
+    'highScore'=>'Rekordas',
+    'timesPlayed'=>'kartų sužaista:',
 
 
                 //Snake
-    'submitScore'=>'Submitaaa Score',
-    'snakeTitle'=>'Snake aaaaGame',
-    'Snake'=>'Saaaaanake',
-    'score'=>'Saaaaaacore',
-    'playSnake'=>'Playaaaaaa Snake',
+    'submitScore'=>'Pateikti rezultatą',
+    'snakeTitle'=>'Snake žaidimas',
+    'Snake'=>'Snake',
+    'score'=>'Rezultatas',
+    'playSnake'=>'Žaisti Snake',
 
                 //Sudoku
-    'errorCount'=>'Error Count',
-    'SudokuTitle'=>'Sudoku Game',
+    'errorCount'=>'klaidų skaičiuoklė',
+    'SudokuTitle'=>'Sudoku žaidimas',
 
                 //Wordle
-    'wordleTitle'=>'Wordle Game',
-    'playWordle'=>'Play Wordle',
-    'playSudoku'=>'Play Sudoku'
+    'wordleTitle'=>'Wordle žaidimas',
+    'playWordle'=>'Žaisti Wordle',
+    'playSudoku'=>'Žaisti Sudoku'
 
 
 

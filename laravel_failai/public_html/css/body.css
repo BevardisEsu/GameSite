@@ -19,7 +19,7 @@ body {      /* Body layout , margin and padding for fullscreen, font is font, se
     grid-column-start: 1;
     grid-column-end: 4;
 
-    width: 98.6%;
+    width: 100%;
     height: 80%;
 
     display: flex;
@@ -92,7 +92,7 @@ nav a:hover {           /* just settings colors when hovering on */
     grid-column-start: 1;
     grid-column-end: 4;
 
-    width: 98.6%;
+    width: 100%;
     height: 100%;
 
     display: flex;

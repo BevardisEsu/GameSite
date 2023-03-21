@@ -31,11 +31,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => SetLocale::class], function () {
     require __DIR__.'/auth.php';
     Route::get('/switch-language/{lang}', [LanguageController::class,'setLanguage'])->name('setLanguage');
-    Route::middleware(['auth'])->group(function () {
-        Route::get('/home', function () {
-            return view('home');
-        });
-    });
+
     Route::middleware(['auth'])->prefix('games')->group(function () {
         Route::get('/snake', function () {
             return view('gamesList.snake');
@@ -45,6 +41,11 @@ Route::group(['middleware' => SetLocale::class], function () {
         });
         Route::get('/wordle', function () {
             return view('gamesList.wordle');
+        });
+    });
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/home', function () {
+            return view('home');
         });
     });
 
@@ -57,7 +58,7 @@ Route::middleware('auth')->group(function () {
 
 
     Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified', isPersonel::class]], function () {
-        Route::get('/', DashBoardController::class)->name('dashboard');
+        Route::get('/', HomeController::class)->name('home');
 
         Route::delete('/product/file/{file}', [ProductController::class, 'destroyFile'])->name('product.destroy-file');
         Route::resources([
